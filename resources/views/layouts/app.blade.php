@@ -30,6 +30,16 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+
+
+                @extends('layouts.app')
+
+@section('title', 'Home')
+
+@section('content')
+    <h2 class="text-2xl font-semibold">Welcome to Laravel Starter 🚀</h2>
+    <p class="mt-2 text-gray-600">Your project is ready.</p>
+@endsection
             </main>
         </div>
     </body>

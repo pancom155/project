@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asset Management System - Asset Replacement</title>
+    <title>Asset Management System - Pre-Asset Recognition</title>
     
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
             min-height: 100vh;
         }
 
-        /* Sidebar Styling - EXACTLY AS PROVIDED */
+        /* SIDEBAR CSS (from your code) */
         .sidebar {
             width: 260px;
             background: var(--sidebar-bg);
@@ -272,21 +272,25 @@
             display: none;
         }
 
-        /* Asset Replacement Specific Styles */
+        /* Hide original sidebar-section-title for sections with toggles */
+        .sidebar-section:has(.section-title-toggle) > .sidebar-section-title {
+            display: none;
+        }
+
+        /* Pre-Asset Recognition Specific Styles */
         .page-header {
             background: white;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--primary);
+            border: 1px solid var(--border-color);
         }
 
         .page-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            color: #1e3c72;
-            margin-bottom: 10px;
+            color: #1e293b;
+            margin-bottom: 5px;
         }
 
         .page-subtitle {
@@ -294,187 +298,209 @@
             font-size: 14px;
         }
 
-        .current-user-section {
-            background: var(--primary-light);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            display: inline-flex;
-            flex-direction: column;
-            gap: 5px;
+        /* User Info and Search */
+        .user-info-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
         }
 
-        .user-label {
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        .user-value {
-            font-size: 14px;
-        }
-
-        /* Replacement Container */
-        .replacement-container {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .section-header {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
+        .user-info {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .section-header i {
-            color: var(--primary);
-        }
-
-        /* Two Column Layout */
-        .two-column-form {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        /* Three Column Layout */
-        .three-column-form {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        /* Form Controls */
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
+        .user-badge {
+            background: var(--primary-light);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 500;
             font-size: 14px;
-            display: block;
         }
 
-        .form-control, .form-select {
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 10px 12px;
-            font-size: 14px;
-            transition: all 0.3s;
-            width: 100%;
-        }
-
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-            outline: none;
-        }
-
-        .form-control.readonly {
-            background-color: #f8fafc;
-            color: #64748b;
-            cursor: not-allowed;
-        }
-
-        /* Search Box */
-        .search-box {
-            position: relative;
-            margin-bottom: 20px;
+        .search-container {
+            display: flex;
+            gap: 10px;
         }
 
         .search-input {
-            width: 100%;
-            padding: 12px 45px 12px 15px;
+            padding: 8px 15px;
             border: 2px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 14px;
-            transition: all 0.3s;
+            min-width: 250px;
         }
 
         .search-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
             outline: none;
         }
 
-        .search-button {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+        .btn-search {
             background: var(--primary);
             color: white;
             border: none;
-            width: 32px;
-            height: 32px;
+            padding: 8px 20px;
             border-radius: 6px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 8px;
         }
 
-        /* Replacement ID Display */
-        .replacement-id {
-            font-family: monospace;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1px;
-            margin: 15px 0;
-            padding: 12px;
-            background: #f8fafc;
+        /* Main Form Grid */
+        .form-container {
+            background: white;
             border-radius: 8px;
-            border: 2px solid var(--border-color);
-            text-align: center;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
         }
 
-        /* Asset Info Display */
-        .asset-info-display {
-            background: #f0f7ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid var(--primary);
-        }
-
-        .asset-info-row {
+        .form-grid {
             display: grid;
-            grid-template-columns: 150px 1fr 150px 1fr;
-            gap: 15px;
-            margin-bottom: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 25px;
         }
 
-        .asset-info-label {
+        .form-section {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .field-group {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .field-label {
             font-weight: 600;
             color: var(--secondary);
             font-size: 14px;
         }
 
-        .asset-info-value {
+        .field-value {
             font-weight: 500;
             color: var(--dark);
             font-size: 14px;
+        }
+
+        /* Vendor Details Grid */
+        .vendor-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .vendor-section {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Product Details */
+        .product-details {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .product-field {
+            background: #f8fafc;
+            border-radius: 6px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .product-field .field-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .product-field .field-value {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* Delivery Master Files Table */
+        .table-container {
+            background: white;
+            border-radius: 8px;
+            padding: 0;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            margin-top: 25px;
+        }
+
+        .table-header {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            background: #f1f5f9;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--dark);
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--secondary);
+        }
+
+        .data-table tr:hover {
+            background: #f8fafc;
         }
 
         /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 30px;
+            margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid var(--border-color);
         }
@@ -499,7 +525,6 @@
 
         .btn-primary:hover {
             background: var(--primary-light);
-            transform: translateY(-1px);
         }
 
         .btn-success {
@@ -509,7 +534,15 @@
 
         .btn-success:hover {
             background: #059669;
-            transform: translateY(-1px);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
         }
 
         .btn-outline {
@@ -522,120 +555,40 @@
             background: var(--light);
         }
 
-        .btn-warning {
-            background: var(--warning);
-            color: white;
-        }
-
-        .btn-warning:hover {
-            background: #d97706;
-            transform: translateY(-1px);
-        }
-
-        /* Notes Section */
-        .notes-section {
-            margin-top: 20px;
-        }
-
-        .notes-textarea {
-            width: 100%;
-            min-height: 80px;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 14px;
-            resize: vertical;
-        }
-
-        .notes-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* Status Badge */
-        .status-badge {
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .status-pending {
-            background: #fef3c7;
-            color: #92400e;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .two-column-form {
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .form-grid,
+            .vendor-grid,
+            .product-details {
                 grid-template-columns: 1fr;
-            }
-            
-            .three-column-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .asset-info-row {
-                grid-template-columns: 1fr;
-                gap: 5px;
             }
         }
 
         @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
+            .user-info-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
             }
             
-            .sidebar.mobile-open {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
+            .search-container {
                 width: 100%;
             }
             
-            .mobile-menu-toggle {
-                display: block !important;
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                z-index: 999;
-                background: var(--primary);
-                color: white;
-                border: none;
-                width: 40px;
-                height: 40px;
-                border-radius: 5px;
-                font-size: 20px;
-                cursor: pointer;
+            .search-input {
+                min-width: 0;
+                flex: 1;
             }
             
             .action-buttons {
                 flex-wrap: wrap;
             }
-        }
-
-        /* Hide original sidebar-section-title for sections with toggles */
-        .sidebar-section:has(.section-title-toggle) > .sidebar-section-title {
-            display: none;
-        }
-
-        /* Asset Section Styling */
-        .asset-section {
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
+            
+            .btn {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -645,7 +598,7 @@
         <i class="bi bi-list"></i>
     </button>
 
-    <!-- Sidebar (EXACTLY AS PROVIDED - NO CHANGES) -->
+    <!-- Sidebar (from your code) -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo">
@@ -674,17 +627,16 @@
                     <span>Open Records</span>
                 </div>
 
-                <div class="sidebar-dropdown-item" data-section="bulk-upload" onclick="window.location.href='{{ route('bulk_upload') }}'">
+                <div class="sidebar-dropdown-item " data-section="bulk-upload" onclick="window.location.href='{{ route('bulk_upload') }}'">
                     <i class="bi bi-upload"></i>
                     <span>Bulk Upload</span>
                 </div>
 
-                <div class="sidebar-dropdown-item" data-section="location-transfer" onclick="window.location.href='{{ route('location_transfer') }}'">
+                <div class="sidebar-dropdown-item " data-section="location-transfer" onclick="window.location.href='{{ route('location_transfer') }}'">
                     <i class="bi bi-arrow-left-right"></i>
                     <span>Location Transfer</span>
                 </div>
-              
-                <div class="sidebar-dropdown-item active" data-section="asset-replacement" onclick="window.location.href='{{ route('asset_replacement') }}'">
+                   <div class="sidebar-dropdown-item " data-section="asset-replacement" onclick="window.location.href='{{ route('asset_replacement') }}'">
                     <i class="bi bi-arrow-repeat"></i>
                     <span>Asset Replacement</span>
                 </div>
@@ -700,7 +652,7 @@
                     <i class="bi bi-file-earmark-text"></i>
                     <span>Form 8106 (Farm OUT)</span>
                 </div>
-                 <div class="sidebar-dropdown-item  " data-section="pre-asset-recognition" onclick="window.location.href='{{ route('pre_asset_recognition') }}'">
+                <div class="sidebar-dropdown-item active " data-section="pre-asset-recognition" onclick="window.location.href='{{ route('pre_asset_recognition') }}'">
                     <i class="bi bi-check-circle"></i>
                     <span>Pre-Asset Recognition</span>
                 </div>
@@ -955,230 +907,237 @@
         </div>
     </div>
 
-    <!-- Main Content - Asset Replacement Interface -->
+    <!-- Main Content - Pre-Asset Recognition Interface -->
     <div class="main-content">
         <!-- Page Header -->
         <div class="page-header">
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h1 class="page-title">
-                        <i class="bi bi-arrow-repeat"></i>
-                        Asset Replacement
-                    </h1>
-                    <p class="page-subtitle">Replace existing assets with new ones</p>
+            <div>
+                <h1 class="page-title">
+                    <i class="bi bi-check-circle"></i>
+                    Pre-Asset Recognition
+                </h1>
+                <p class="page-subtitle">Record and recognize assets before full asset registration</p>
+            </div>
+        </div>
+
+        <!-- User Info and Search Section -->
+        <div class="form-container">
+            <div class="user-info-section">
+                <div class="user-info">
+                    <span style="font-weight: 600;">Current User :</span>
+                    <span class="user-badge">bmla</span>
                 </div>
-                <div class="current-user-section">
-                    <div class="user-label">Current User:</div>
-                    <div class="user-value">barla</div>
-                    <div class="user-label">Active Directory Group:</div>
-                    <div class="user-value">FANS-Admin</div>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search DR No., Vendor, etc...">
+                    <button class="btn-search" id="searchBtn">
+                        <i class="bi bi-search"></i>
+                        Search
+                    </button>
                 </div>
             </div>
         </div>
 
-        <!-- Replacement Container -->
-        <div class="replacement-container">
-            <!-- Replacement ID Display -->
-            <div class="replacement-id">
-                REP-2020-00000004
-            </div>
+        <!-- Main Form Container -->
+        <div class="form-container">
+            <!-- Delivery Details -->
+            <div class="form-grid">
+                <div class="form-section">
+                    <div class="section-header">Delivery Details</div>
+                    <div class="field-group">
+                        <span class="field-label">Delivery Date :</span>
+                        <span class="field-value">04/16/20</span>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-label">Cargo :</span>
+                        <span class="field-value">Atrasla</span>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-label">DR No. :</span>
+                        <span class="field-value">100056</span>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-label">Consignee's Name :</span>
+                        <span class="field-value">Symbol</span>
+                    </div>
+                    <div class="field-group">
+                        <span class="field-label">Shippers Name :</span>
+                        <span class="field-value">DSAF F050</span>
+                    </div>
+                </div>
 
-            <!-- Basic Information Section -->
-            <div class="section-header">
-                <i class="bi bi-info-circle"></i>
-                ASSET REPLACEMENT INFORMATION
-            </div>
-
-            <div class="three-column-form">
-                <div class="form-group">
-                    <label class="form-label">Replacement ID:</label>
-                    <input type="text" class="form-control readonly" value="REP-2020-00000004" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Replace Date:</label>
-                    <input type="text" class="form-control readonly" value="04/16/20" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Requestor:</label>
-                    <input type="text" class="form-control readonly" value="barla" readonly>
-                </div>
-            </div>
-
-            <!-- Asset to be Replaced Section -->
-            <div class="section-header" style="margin-top: 30px;">
-                <i class="bi bi-box"></i>
-                ASSET TO BE REPLACED
-            </div>
-
-            <!-- Search Box for Existing Asset -->
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search by Asset ID, Serial No. or Description..." id="searchAsset">
-                <button class="search-button" id="searchButton">
-                    <i class="bi bi-search"></i>
-                </button>
-            </div>
-
-            <!-- Asset Information Display -->
-            <div class="asset-info-display">
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Asset ID:</div>
-                    <div class="asset-info-value">CPX00000000446</div>
-                    <div class="asset-info-label">AMR ID:</div>
-                    <div class="asset-info-value">-</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Serial No.:</div>
-                    <div class="asset-info-value">abc</div>
-                    <div class="asset-info-label">Description:</div>
-                    <div class="asset-info-value">HP Printer</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Category:</div>
-                    <div class="asset-info-value">COMPUTER & PRINTER</div>
-                    <div class="asset-info-label">Sub Category:</div>
-                    <div class="asset-info-value">Printer</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Employee ID:</div>
-                    <div class="asset-info-value">21342</div>
-                    <div class="asset-info-label">End User SID:</div>
-                    <div class="asset-info-value">ABC DEF</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Local Cost Center:</div>
-                    <div class="asset-info-value">0</div>
-                    <div class="asset-info-label">Site:</div>
-                    <div class="asset-info-value">TBD</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Floor:</div>
-                    <div class="asset-info-value">-</div>
-                    <div class="asset-info-label">Area/Workstation:</div>
-                    <div class="asset-info-value">B</div>
-                </div>
-            </div>
-
-            <!-- Notes Section for Asset to be Replaced -->
-            <div class="notes-section">
-                <label class="form-label">Notes:</label>
-                <textarea class="notes-textarea" placeholder="Enter notes about the asset to be replaced..."></textarea>
-            </div>
-
-            <!-- Replacement Asset Section -->
-            <div class="section-header" style="margin-top: 40px;">
-                <i class="bi bi-arrow-right-circle"></i>
-                REPLACEMENT ASSET
-            </div>
-
-            <!-- Search Box for Replacement Asset -->
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search for replacement asset..." id="searchReplacement">
-                <button class="search-button" id="searchReplacementButton">
-                    <i class="bi bi-search"></i>
-                </button>
-            </div>
-
-            <!-- Replacement Asset Form -->
-            <div class="two-column-form">
-                <div class="form-group">
-                    <label class="form-label">Location:</label>
-                    <select class="form-select">
-                        <option value="">Select Location</option>
-                        <option value="TBD" selected>TBD</option>
-                        <option value="HQ">Headquarters</option>
-                        <option value="BRANCH">Branch Office</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">ITAF No.:</label>
-                    <input type="text" class="form-control" placeholder="Enter ITAF number">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">New Serial:</label>
-                    <input type="text" class="form-control" placeholder="Enter new serial number">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Description:</label>
-                    <input type="text" class="form-control" placeholder="Enter asset description">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Employee ID:</label>
-                    <input type="text" class="form-control" placeholder="Enter employee ID">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">End User SID:</label>
-                    <input type="text" class="form-control" placeholder="Enter end user SID">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Site:</label>
-                    <select class="form-select">
-                        <option value="">Select Site</option>
-                        <option value="TBD" selected>TBD</option>
-                        <option value="MAIN">Main Building</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Floor:</label>
-                    <select class="form-select">
-                        <option value="">Select Floor</option>
-                        <option value="1">1st Floor</option>
-                        <option value="2">2nd Floor</option>
-                        <option value="3">3rd Floor</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Area/Workstation:</label>
-                    <input type="text" class="form-control" placeholder="Enter area or workstation">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Remarks:</label>
-                    <input type="text" class="form-control" placeholder="Enter any remarks">
-                </div>
-            </div>
-
-            <!-- Status Display -->
-            <div style="margin-top: 20px; padding: 15px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border-color);">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <label class="form-label">Current Status:</label>
-                        <div class="status-badge status-pending">
-                            <i class="bi bi-clock"></i>
-                            Pending Replacement
+                <!-- Vendor Details -->
+                <div class="form-section">
+                    <div class="section-header">Vendor Details (Delivery Receipt)</div>
+                    <div class="vendor-grid">
+                        <div class="vendor-section">
+                            <div class="field-group">
+                                <span class="field-label">Vendor :</span>
+                                <span class="field-value">BSMAC</span>
+                            </div>
+                            <div class="field-group">
+                                <span class="field-label">PO Number :</span>
+                                <span class="field-value">9339933</span>
+                            </div>
+                        </div>
+                        <div class="vendor-section">
+                            <div class="field-group">
+                                <span class="field-label">Delivery Date :</span>
+                                <span class="field-value">04/15/20</span>
+                            </div>
+                            <div class="field-group">
+                                <span class="field-label">DR No. :</span>
+                                <span class="field-value">1035991</span>
+                            </div>
+                        </div>
+                        <div class="vendor-section">
+                            <div class="field-group">
+                                <span class="field-label">Delivery Address:</span>
+                                <span class="field-value"></span>
+                            </div>
+                            <div class="field-group">
+                                <span class="field-label">Quantity :</span>
+                                <span class="field-value">3</span>
+                            </div>
                         </div>
                     </div>
-                    <div>
-                        <label class="form-label">Created On:</label>
-                        <div>04/16/2020</div>
-                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details -->
+            <div class="product-details">
+                <div class="product-field">
+                    <span class="field-label">Brand :</span>
+                    <span class="field-value">TOSHIBA</span>
+                </div>
+                <div class="product-field">
+                    <span class="field-label">Serial Number :</span>
+                    <span class="field-value">PRO023</span>
+                </div>
+                <div class="product-field">
+                    <span class="field-label">Received By :</span>
+                    <span class="field-value">MIDBANCE</span>
+                </div>
+                <div class="product-field">
+                    <span class="field-label"></span>
+                    <span class="field-value">Symbol</span>
+                </div>
+            </div>
+
+            <!-- Delivery Master Files Table -->
+            <div class="table-container">
+                <div class="table-header">
+                    <h3 class="table-title">Delivery Master Files</h3>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i>
+                        Add New Delivery
+                    </button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>DR No.</th>
+                                <th>Cargo</th>
+                                <th>Delivery Date</th>
+                                <th>Consignee</th>
+                                <th>Shipper</th>
+                                <th>Vendor Name</th>
+                                <th>Vendor DR Date</th>
+                                <th>Vendor DR Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>100056</strong></td>
+                                <td>Atrasla</td>
+                                <td>04/16/20</td>
+                                <td>Symbol</td>
+                                <td>DSAF F050</td>
+                                <td>ACCESS FRONTIER TECH INC.</td>
+                                <td>02/26/20</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1035991</strong></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>ABENSON</td>
+                                <td>03/26/20</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>ALL HOME</td>
+                                <td>03/26/20</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>03/24/20</td>
+                                <td></td>
+                                <td></td>
+                                <td>HILT INC</td>
+                                <td>03/24/20</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>03/26/20</td>
+                                <td>dgf</td>
+                                <td>i</td>
+                                <td>ALCARD PLASTICS PHIL. INC.</td>
+                                <td>03/26/20</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>03/20/20</td>
+                                <td></td>
+                                <td>usdrq</td>
+                                <td>ABENSON</td>
+                                <td>03/20/20</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="btn btn-success" id="searchBtn">
-                    <i class="bi bi-search"></i>
-                    Search
-                </button>
-                <button class="btn btn-primary" id="replaceBtn">
-                    <i class="bi bi-arrow-repeat"></i>
-                    Replace
-                </button>
-                <button class="btn btn-warning" id="submitBtn">
+                <button class="btn btn-success" id="recognizeBtn">
                     <i class="bi bi-check-circle"></i>
-                    Submit
+                    Recognize Asset
                 </button>
-                <button class="btn btn-outline" id="closeBtn">
+                <button class="btn btn-primary" id="saveBtn">
+                    <i class="bi bi-save"></i>
+                    Save Record
+                </button>
+                <button class="btn btn-warning" id="editBtn">
+                    <i class="bi bi-pencil"></i>
+                    Edit
+                </button>
+                <button class="btn btn-outline" id="clearBtn">
                     <i class="bi bi-x-circle"></i>
-                    Close
+                    Clear Form
                 </button>
                 <div style="margin-left: auto;">
-                    <button class="btn btn-outline">
+                    <button class="btn btn-outline" id="printBtn">
                         <i class="bi bi-printer"></i>
                         Print
                     </button>
-                    <button class="btn btn-outline">
-                        <i class="bi bi-house"></i>
-                        Home
+                    <button class="btn btn-outline" id="exportBtn">
+                        <i class="bi bi-download"></i>
+                        Export
                     </button>
                 </div>
             </div>
@@ -1235,152 +1194,144 @@
                 }
             });
             
-            // Initialize with TRANSACTIONS menu open and Asset Replacement active
-            document.getElementById('transactionsToggle').click();
-            document.getElementById('transactionsMenu').classList.add('open');
-            document.querySelector('[data-section="asset-replacement"]').classList.add('active');
-            document.querySelector('#transactionsToggle .toggle-icon').classList.add('open');
-            
-            // Search functionality for existing asset
-            const searchButton = document.getElementById('searchButton');
-            const searchAsset = document.getElementById('searchAsset');
-            
-            if (searchButton) {
-                searchButton.addEventListener('click', function() {
-                    if (searchAsset.value.trim() === '') {
-                        alert('Please enter search criteria for the asset to be replaced.');
-                        return;
-                    }
-                    
-                    // Simulate search - in real app, this would make an API call
-                    showSuccessMessage(`Searching for asset: ${searchAsset.value}`);
-                    
-                    // Simulate finding an asset (with delay)
-                    setTimeout(() => {
-                        showSuccessMessage('Asset found: CPX00000000446 - HP Printer');
-                        // Here you would update the form with the found asset data
-                    }, 1000);
-                });
+            // Initialize with TRANSACTIONS menu open and Pre-Asset Recognition active
+            const transactionsToggle = document.getElementById('transactionsToggle');
+            if (transactionsToggle) {
+                transactionsToggle.click();
+                document.getElementById('transactionsMenu').classList.add('open');
+                document.querySelector('#transactionsToggle .toggle-icon').classList.add('open');
             }
             
-            // Search functionality for replacement asset
-            const searchReplacementButton = document.getElementById('searchReplacementButton');
-            const searchReplacement = document.getElementById('searchReplacement');
+            // Set active section (Pre-Asset Recognition)
+            const preAssetItem = document.querySelector('[data-section="pre-asset-recognition"]');
+            if (preAssetItem) {
+                preAssetItem.classList.add('active');
+            }
             
-            if (searchReplacementButton) {
-                searchReplacementButton.addEventListener('click', function() {
-                    if (searchReplacement.value.trim() === '') {
-                        alert('Please enter search criteria for the replacement asset.');
+            // Search functionality
+            const searchBtn = document.getElementById('searchBtn');
+            const searchInput = document.querySelector('.search-input');
+            
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
+                    if (searchInput.value.trim() === '') {
+                        alert('Please enter search criteria for Delivery Receipts.');
+                        searchInput.style.borderColor = '#ef4444';
                         return;
                     }
+                    
+                    searchInput.style.borderColor = '';
+                    showMessage(`Searching for: ${searchInput.value}`, 'info');
                     
                     // Simulate search
-                    showSuccessMessage(`Searching for replacement asset: ${searchReplacement.value}`);
-                    
-                    // Simulate finding a replacement asset
                     setTimeout(() => {
-                        showSuccessMessage('Replacement asset found: CPX00000000447 - HP LaserJet Printer');
-                        // Here you would update the form with the found replacement asset data
+                        showMessage('Found 6 matching delivery records', 'success');
                     }, 1000);
                 });
             }
             
-            // Replace button functionality
-            const replaceBtn = document.getElementById('replaceBtn');
-            if (replaceBtn) {
-                replaceBtn.addEventListener('click', function() {
-                    if (confirm('Are you sure you want to replace this asset? This action cannot be undone.')) {
-                        showSuccessMessage('Asset replacement process initiated. Please fill in the replacement asset details.');
-                        
-                        // Enable replacement asset form fields
-                        document.querySelectorAll('#searchReplacement, .form-select, .form-control:not(.readonly)').forEach(field => {
-                            field.disabled = false;
-                        });
+            // Recognize Asset button
+            const recognizeBtn = document.getElementById('recognizeBtn');
+            if (recognizeBtn) {
+                recognizeBtn.addEventListener('click', function() {
+                    if (confirm('Are you sure you want to recognize this asset? This will move it to the asset registration queue.')) {
+                        showMessage('Asset recognized successfully! Ready for full asset registration.', 'success');
                     }
                 });
             }
             
-            // Submit button functionality
-            const submitBtn = document.getElementById('submitBtn');
-            if (submitBtn) {
-                submitBtn.addEventListener('click', function() {
-                    // Check if all required fields are filled
-                    const requiredFields = document.querySelectorAll('.form-select, .form-control:not(.readonly)');
-                    let isValid = true;
-                    
-                    requiredFields.forEach(field => {
-                        if (!field.disabled && field.value.trim() === '') {
-                            isValid = false;
-                            field.style.borderColor = 'var(--danger)';
-                        } else {
-                            field.style.borderColor = '';
-                        }
-                    });
-                    
-                    if (!isValid) {
-                        alert('Please fill in all required fields for the replacement asset.');
-                        return;
-                    }
-                    
-                    if (confirm('Submit this asset replacement request?')) {
-                        showSuccessMessage('Asset replacement request submitted successfully! The request has been sent for approval.');
-                        
-                        // Simulate form reset after submission
-                        setTimeout(() => {
-                            document.querySelectorAll('.form-control:not(.readonly)').forEach(input => {
-                                input.value = '';
-                            });
-                            document.querySelectorAll('.form-select').forEach(select => {
-                                select.selectedIndex = 0;
-                            });
-                            document.querySelectorAll('.notes-textarea').forEach(textarea => {
-                                textarea.value = '';
-                            });
-                        }, 2000);
+            // Save Record button
+            const saveBtn = document.getElementById('saveBtn');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', function() {
+                    if (confirm('Save this pre-asset recognition record?')) {
+                        showMessage('Record saved successfully!', 'success');
                     }
                 });
             }
             
-            // Close button functionality
-            const closeBtn = document.getElementById('closeBtn');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', function() {
-                    if (confirm('Are you sure you want to close? All unsaved changes will be lost.')) {
-                        // Reset form
-                        document.querySelectorAll('.form-control:not(.readonly)').forEach(input => {
-                            input.value = '';
-                        });
-                        document.querySelectorAll('.form-select').forEach(select => {
-                            select.selectedIndex = 0;
-                        });
-                        document.querySelectorAll('.notes-textarea').forEach(textarea => {
-                            textarea.value = '';
-                        });
-                        
-                        showSuccessMessage('Form has been cleared.');
+            // Clear Form button
+            const clearBtn = document.getElementById('clearBtn');
+            if (clearBtn) {
+                clearBtn.addEventListener('click', function() {
+                    if (confirm('Clear all form data? This action cannot be undone.')) {
+                        showMessage('Form cleared successfully.', 'info');
                     }
                 });
             }
             
-            // Close sidebar when clicking outside on mobile
-            document.addEventListener('click', function(event) {
-                if (window.innerWidth <= 768) {
-                    if (!sidebar.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
-                        sidebar.classList.remove('mobile-open');
+            // Print button
+            const printBtn = document.getElementById('printBtn');
+            if (printBtn) {
+                printBtn.addEventListener('click', function() {
+                    window.print();
+                });
+            }
+            
+            // Export button
+            const exportBtn = document.getElementById('exportBtn');
+            if (exportBtn) {
+                exportBtn.addEventListener('click', function() {
+                    showMessage('Exporting data to CSV file...', 'info');
+                    setTimeout(() => {
+                        showMessage('Data exported successfully!', 'success');
+                    }, 1500);
+                });
+            }
+            
+            // Table row click functionality
+            const tableRows = document.querySelectorAll('.data-table tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('click', function() {
+                    // Remove active class from all rows
+                    tableRows.forEach(r => r.classList.remove('active'));
+                    
+                    // Add active class to clicked row
+                    this.classList.add('active');
+                    
+                    // Get DR No. from the row
+                    const drNo = this.querySelector('td:first-child').textContent.trim();
+                    if (drNo) {
+                        showMessage(`Selected DR No.: ${drNo}`, 'info');
                     }
-                }
+                });
             });
             
-            function showSuccessMessage(message) {
-                // Create toast notification
-                const toast = document.createElement('div');
-                toast.style.cssText = `
+            // Add active class styling
+            const style = document.createElement('style');
+            style.textContent = `
+                .data-table tr.active {
+                    background-color: #dbeafe !important;
+                }
+                .data-table tr.active td {
+                    color: #1e40af;
+                    font-weight: 500;
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Message function
+            function showMessage(message, type = 'info') {
+                // Remove existing message
+                const existingMsg = document.querySelector('.message-toast');
+                if (existingMsg) existingMsg.remove();
+                
+                const colors = {
+                    'info': '#3b82f6',
+                    'success': '#10b981',
+                    'warning': '#f59e0b',
+                    'error': '#ef4444'
+                };
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message-toast';
+                messageDiv.style.cssText = `
                     position: fixed;
                     top: 20px;
                     right: 20px;
-                    background: var(--success);
+                    background: ${colors[type]};
                     color: white;
-                    padding: 15px 20px;
+                    padding: 12px 18px;
                     border-radius: 6px;
                     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
                     z-index: 1000;
@@ -1390,23 +1341,21 @@
                     animation: slideIn 0.3s ease;
                 `;
                 
-                toast.innerHTML = `
-                    <i class="bi bi-check-circle" style="font-size: 20px;"></i>
+                messageDiv.innerHTML = `
                     <span>${message}</span>
                 `;
                 
-                document.body.appendChild(toast);
+                document.body.appendChild(messageDiv);
                 
-                // Remove toast after 5 seconds
                 setTimeout(() => {
-                    toast.style.animation = 'slideOut 0.3s ease';
-                    setTimeout(() => toast.remove(), 300);
-                }, 5000);
+                    messageDiv.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => messageDiv.remove(), 300);
+                }, 3000);
             }
             
             // Add CSS animations
-            const style = document.createElement('style');
-            style.textContent = `
+            const animationStyle = document.createElement('style');
+            animationStyle.textContent = `
                 @keyframes slideIn {
                     from {
                         transform: translateX(100%);
@@ -1428,7 +1377,7 @@
                     }
                 }
             `;
-            document.head.appendChild(style);
+            document.head.appendChild(animationStyle);
         });
     </script>
 </body>

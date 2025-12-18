@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asset Management System - Asset Replacement</title>
+    <title>Asset Management System - Loan Assets</title>
     
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -272,21 +272,20 @@
             display: none;
         }
 
-        /* Asset Replacement Specific Styles */
+        /* Loan Assets Specific Styles */
         .page-header {
             background: white;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--primary);
+            border: 1px solid var(--border-color);
         }
 
         .page-title {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
-            color: #1e3c72;
-            margin-bottom: 10px;
+            color: #1e293b;
+            margin-bottom: 5px;
         }
 
         .page-subtitle {
@@ -294,84 +293,69 @@
             font-size: 14px;
         }
 
-        .current-user-section {
-            background: var(--primary-light);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 14px;
-            display: inline-flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .user-label {
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        .user-value {
-            font-size: 14px;
-        }
-
-        /* Replacement Container */
-        .replacement-container {
+        /* Form Container */
+        .form-container {
             background: white;
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-section {
+            margin-bottom: 25px;
         }
 
         .section-header {
             font-size: 18px;
             font-weight: 600;
             color: var(--dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 2px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
-        .section-header i {
-            color: var(--primary);
-        }
-
-        /* Two Column Layout */
-        .two-column-form {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        /* Three Column Layout */
-        .three-column-form {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        /* Form Controls */
-        .form-group {
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
             margin-bottom: 15px;
         }
 
-        .form-label {
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-size: 14px;
-            display: block;
+        /* Form Table Layout (like in your image) */
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
 
+        .form-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+
+        .form-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .field-label {
+            font-weight: 600;
+            color: var(--secondary);
+            width: 30%;
+            background-color: #f8fafc;
+            padding-right: 20px;
+        }
+
+        .field-value {
+            width: 70%;
+        }
+
+        /* Form Controls */
         .form-control, .form-select {
             border: 1px solid var(--border-color);
             border-radius: 6px;
-            padding: 10px 12px;
+            padding: 8px 12px;
             font-size: 14px;
             transition: all 0.3s;
             width: 100%;
@@ -391,90 +375,43 @@
 
         /* Search Box */
         .search-box {
-            position: relative;
+            display: flex;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .search-input {
-            width: 100%;
-            padding: 12px 45px 12px 15px;
+            flex: 1;
+            padding: 10px 15px;
             border: 2px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 6px;
             font-size: 14px;
-            transition: all 0.3s;
         }
 
         .search-input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
             outline: none;
         }
 
-        .search-button {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Replacement ID Display */
-        .replacement-id {
-            font-family: monospace;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 1px;
-            margin: 15px 0;
-            padding: 12px;
-            background: #f8fafc;
-            border-radius: 8px;
-            border: 2px solid var(--border-color);
-            text-align: center;
-        }
-
-        /* Asset Info Display */
-        .asset-info-display {
-            background: #f0f7ff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid var(--primary);
-        }
-
-        .asset-info-row {
-            display: grid;
-            grid-template-columns: 150px 1fr 150px 1fr;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .asset-info-label {
-            font-weight: 600;
-            color: var(--secondary);
-            font-size: 14px;
-        }
-
-        .asset-info-value {
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 500;
-            color: var(--dark);
-            font-size: 14px;
+        }
+
+        .status-in-storage {
+            background-color: #fef3c7;
+            color: #92400e;
         }
 
         /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 10px;
-            margin-top: 30px;
+            margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid var(--border-color);
         }
@@ -499,7 +436,6 @@
 
         .btn-primary:hover {
             background: var(--primary-light);
-            transform: translateY(-1px);
         }
 
         .btn-success {
@@ -509,7 +445,6 @@
 
         .btn-success:hover {
             background: #059669;
-            transform: translateY(-1px);
         }
 
         .btn-outline {
@@ -529,94 +464,34 @@
 
         .btn-warning:hover {
             background: #d97706;
-            transform: translateY(-1px);
         }
 
-        /* Notes Section */
-        .notes-section {
+        /* Loan Items Section */
+        .loan-items-section {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
             margin-top: 20px;
-        }
-
-        .notes-textarea {
-            width: 100%;
-            min-height: 80px;
-            padding: 12px;
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 14px;
-            resize: vertical;
         }
 
-        .notes-textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        /* Status Badge */
-        .status-badge {
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-flex;
+        .loan-items-header {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            margin-bottom: 15px;
         }
 
-        .status-pending {
-            background: #fef3c7;
-            color: #92400e;
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #64748b;
         }
 
-        /* Responsive */
-        @media (max-width: 992px) {
-            .two-column-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .three-column-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .asset-info-row {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.mobile-open {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-            }
-            
-            .mobile-menu-toggle {
-                display: block !important;
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                z-index: 999;
-                background: var(--primary);
-                color: white;
-                border: none;
-                width: 40px;
-                height: 40px;
-                border-radius: 5px;
-                font-size: 20px;
-                cursor: pointer;
-            }
-            
-            .action-buttons {
-                flex-wrap: wrap;
-            }
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #cbd5e1;
         }
 
         /* Hide original sidebar-section-title for sections with toggles */
@@ -624,18 +499,50 @@
             display: none;
         }
 
-        /* Asset Section Styling */
-        .asset-section {
-            margin-bottom: 30px;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--dark);
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-table {
+                display: block;
+            }
+            
+            .form-table tbody {
+                display: block;
+            }
+            
+            .form-table tr {
+                display: block;
+                margin-bottom: 15px;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 15px;
+            }
+            
+            .form-table td {
+                display: block;
+                width: 100%;
+                border-bottom: none;
+                padding: 8px 0;
+            }
+            
+            .field-label {
+                width: 100%;
+                background-color: transparent;
+                font-size: 14px;
+                padding-bottom: 5px;
+            }
+            
+            .field-value {
+                width: 100%;
+            }
+            
+            .action-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .btn {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -645,7 +552,7 @@
         <i class="bi bi-list"></i>
     </button>
 
-    <!-- Sidebar (EXACTLY AS PROVIDED - NO CHANGES) -->
+    <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <div class="logo">
@@ -674,17 +581,16 @@
                     <span>Open Records</span>
                 </div>
 
-                <div class="sidebar-dropdown-item" data-section="bulk-upload" onclick="window.location.href='{{ route('bulk_upload') }}'">
+                <div class="sidebar-dropdown-item " data-section="bulk-upload" onclick="window.location.href='{{ route('bulk_upload') }}'">
                     <i class="bi bi-upload"></i>
                     <span>Bulk Upload</span>
                 </div>
 
-                <div class="sidebar-dropdown-item" data-section="location-transfer" onclick="window.location.href='{{ route('location_transfer') }}'">
+                <div class="sidebar-dropdown-item " data-section="location-transfer" onclick="window.location.href='{{ route('location_transfer') }}'">
                     <i class="bi bi-arrow-left-right"></i>
                     <span>Location Transfer</span>
                 </div>
-              
-                <div class="sidebar-dropdown-item active" data-section="asset-replacement" onclick="window.location.href='{{ route('asset_replacement') }}'">
+                   <div class="sidebar-dropdown-item " data-section="asset-replacement" onclick="window.location.href='{{ route('asset_replacement') }}'">
                     <i class="bi bi-arrow-repeat"></i>
                     <span>Asset Replacement</span>
                 </div>
@@ -700,14 +606,17 @@
                     <i class="bi bi-file-earmark-text"></i>
                     <span>Form 8106 (Farm OUT)</span>
                 </div>
-                 <div class="sidebar-dropdown-item  " data-section="pre-asset-recognition" onclick="window.location.href='{{ route('pre_asset_recognition') }}'">
+                <div class="sidebar-dropdown-item  " data-section="pre-asset-recognition" onclick="window.location.href='{{ route('pre_asset_recognition') }}'">
                     <i class="bi bi-check-circle"></i>
                     <span>Pre-Asset Recognition</span>
                 </div>
-                 <div class="sidebar-dropdown-item " data-section="loan-asset" onclick="window.location.href='{{ route('loan_asset') }}'">
+
+                <div class="sidebar-dropdown-item active" data-section="loan-asset" onclick="window.location.href='{{ route('loan_asset') }}'">
                     <i class="bi bi-arrow-up-right"></i>
                     <span>Loan Assets</span>
                 </div>
+
+                
             </div>
         </div>
         
@@ -955,215 +864,173 @@
         </div>
     </div>
 
-    <!-- Main Content - Asset Replacement Interface -->
+    <!-- Main Content - Loan Assets Interface -->
     <div class="main-content">
         <!-- Page Header -->
         <div class="page-header">
-            <div class="d-flex justify-content-between align-items-start">
-                <div>
-                    <h1 class="page-title">
-                        <i class="bi bi-arrow-repeat"></i>
-                        Asset Replacement
-                    </h1>
-                    <p class="page-subtitle">Replace existing assets with new ones</p>
-                </div>
-                <div class="current-user-section">
-                    <div class="user-label">Current User:</div>
-                    <div class="user-value">barla</div>
-                    <div class="user-label">Active Directory Group:</div>
-                    <div class="user-value">FANS-Admin</div>
-                </div>
+            <div>
+                <h1 class="page-title">
+                    <i class="bi bi-arrow-up-right"></i>
+                    Loan Assets
+                </h1>
+                <p class="page-subtitle">Loan out assets to employees or departments</p>
             </div>
         </div>
 
-        <!-- Replacement Container -->
-        <div class="replacement-container">
-            <!-- Replacement ID Display -->
-            <div class="replacement-id">
-                REP-2020-00000004
+        <!-- Form Container -->
+        <div class="form-container">
+            <!-- Asset Response Section (from image) -->
+            <div class="form-section">
+                <div class="section-header">ASSET RESPONSE</div>
+                
+                <table class="form-table">
+                    <tr>
+                        <td class="field-label">Loan Date :</td>
+                        <td class="field-value">
+                            <input type="text" class="form-control" value="04/16/20">
+                        </td>
+                        <td class="field-label">Requestor :</td>
+                        <td class="field-value">
+                            <input type="text" class="form-control readonly" value="bar1a" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Site :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control" value="TBD">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Asset ID :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control" value="FFXX0000000078">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">AMR ID :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Serial No. :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Description :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control" value="CHAIR BLACK">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Category :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control" value="FURNITURE & FIXTURE">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Sub Category :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Status :</td>
+                        <td class="field-value" colspan="3">
+                            <span class="status-badge status-in-storage">In Storage</span>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <!-- Basic Information Section -->
-            <div class="section-header">
-                <i class="bi bi-info-circle"></i>
-                ASSET REPLACEMENT INFORMATION
+            <!-- Loan Out Asset Section -->
+            <div class="form-section">
+                <div class="section-header">LOAN OUT ASSET</div>
+                
+                <div class="section-title">LOAN OUT RESPONSE</div>
+                
+                <!-- Search Box -->
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search asset to loan out..." id="searchAsset">
+                    <button class="btn btn-primary" id="searchBtn">
+                        <i class="bi bi-search"></i>
+                        Search
+                    </button>
+                </div>
+                
+                <div class="section-title">LOAN OUT COMPONENT</div>
+                
+                <table class="form-table">
+                    <tr>
+                        <td class="field-label">Loan ID :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control readonly" value="LOAN-2020-000000006" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">ITAF No. :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control" placeholder="Enter ITAF number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Employee ID :</td>
+                        <td class="field-value" colspan="3">
+                            <input type="text" class="form-control" placeholder="Enter employee ID">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Start Date :</td>
+                        <td class="field-value">
+                            <input type="text" class="form-control" value="04/16/20">
+                        </td>
+                        <td class="field-label">Due Date :</td>
+                        <td class="field-value">
+                            <input type="text" class="form-control" value="04/16/20">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="field-label">Remarks :</td>
+                        <td class="field-value" colspan="3">
+                            <textarea class="form-control" rows="3" placeholder="Enter remarks about the loan"></textarea>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
-            <div class="three-column-form">
-                <div class="form-group">
-                    <label class="form-label">Replacement ID:</label>
-                    <input type="text" class="form-control readonly" value="REP-2020-00000004" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Replace Date:</label>
-                    <input type="text" class="form-control readonly" value="04/16/20" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Requestor:</label>
-                    <input type="text" class="form-control readonly" value="barla" readonly>
-                </div>
-            </div>
-
-            <!-- Asset to be Replaced Section -->
-            <div class="section-header" style="margin-top: 30px;">
-                <i class="bi bi-box"></i>
-                ASSET TO BE REPLACED
-            </div>
-
-            <!-- Search Box for Existing Asset -->
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search by Asset ID, Serial No. or Description..." id="searchAsset">
-                <button class="search-button" id="searchButton">
-                    <i class="bi bi-search"></i>
-                </button>
-            </div>
-
-            <!-- Asset Information Display -->
-            <div class="asset-info-display">
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Asset ID:</div>
-                    <div class="asset-info-value">CPX00000000446</div>
-                    <div class="asset-info-label">AMR ID:</div>
-                    <div class="asset-info-value">-</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Serial No.:</div>
-                    <div class="asset-info-value">abc</div>
-                    <div class="asset-info-label">Description:</div>
-                    <div class="asset-info-value">HP Printer</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Category:</div>
-                    <div class="asset-info-value">COMPUTER & PRINTER</div>
-                    <div class="asset-info-label">Sub Category:</div>
-                    <div class="asset-info-value">Printer</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Employee ID:</div>
-                    <div class="asset-info-value">21342</div>
-                    <div class="asset-info-label">End User SID:</div>
-                    <div class="asset-info-value">ABC DEF</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Local Cost Center:</div>
-                    <div class="asset-info-value">0</div>
-                    <div class="asset-info-label">Site:</div>
-                    <div class="asset-info-value">TBD</div>
-                </div>
-                <div class="asset-info-row">
-                    <div class="asset-info-label">Floor:</div>
-                    <div class="asset-info-value">-</div>
-                    <div class="asset-info-label">Area/Workstation:</div>
-                    <div class="asset-info-value">B</div>
-                </div>
-            </div>
-
-            <!-- Notes Section for Asset to be Replaced -->
-            <div class="notes-section">
-                <label class="form-label">Notes:</label>
-                <textarea class="notes-textarea" placeholder="Enter notes about the asset to be replaced..."></textarea>
-            </div>
-
-            <!-- Replacement Asset Section -->
-            <div class="section-header" style="margin-top: 40px;">
-                <i class="bi bi-arrow-right-circle"></i>
-                REPLACEMENT ASSET
-            </div>
-
-            <!-- Search Box for Replacement Asset -->
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="Search for replacement asset..." id="searchReplacement">
-                <button class="search-button" id="searchReplacementButton">
-                    <i class="bi bi-search"></i>
-                </button>
-            </div>
-
-            <!-- Replacement Asset Form -->
-            <div class="two-column-form">
-                <div class="form-group">
-                    <label class="form-label">Location:</label>
-                    <select class="form-select">
-                        <option value="">Select Location</option>
-                        <option value="TBD" selected>TBD</option>
-                        <option value="HQ">Headquarters</option>
-                        <option value="BRANCH">Branch Office</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">ITAF No.:</label>
-                    <input type="text" class="form-control" placeholder="Enter ITAF number">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">New Serial:</label>
-                    <input type="text" class="form-control" placeholder="Enter new serial number">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Description:</label>
-                    <input type="text" class="form-control" placeholder="Enter asset description">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Employee ID:</label>
-                    <input type="text" class="form-control" placeholder="Enter employee ID">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">End User SID:</label>
-                    <input type="text" class="form-control" placeholder="Enter end user SID">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Site:</label>
-                    <select class="form-select">
-                        <option value="">Select Site</option>
-                        <option value="TBD" selected>TBD</option>
-                        <option value="MAIN">Main Building</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Floor:</label>
-                    <select class="form-select">
-                        <option value="">Select Floor</option>
-                        <option value="1">1st Floor</option>
-                        <option value="2">2nd Floor</option>
-                        <option value="3">3rd Floor</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Area/Workstation:</label>
-                    <input type="text" class="form-control" placeholder="Enter area or workstation">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Remarks:</label>
-                    <input type="text" class="form-control" placeholder="Enter any remarks">
-                </div>
-            </div>
-
-            <!-- Status Display -->
-            <div style="margin-top: 20px; padding: 15px; background: #f8fafc; border-radius: 8px; border: 1px solid var(--border-color);">
-                <div class="d-flex justify-content-between align-items-center">
+            <!-- Excel Asset Items to Loan Out Section -->
+            <div class="loan-items-section">
+                <div class="loan-items-header">
                     <div>
-                        <label class="form-label">Current Status:</label>
-                        <div class="status-badge status-pending">
-                            <i class="bi bi-clock"></i>
-                            Pending Replacement
-                        </div>
+                        <div class="section-title">Excel Asset Items to Loan Out</div>
+                        <p class="page-subtitle">List of assets selected for loan</p>
                     </div>
-                    <div>
-                        <label class="form-label">Created On:</label>
-                        <div>04/16/2020</div>
-                    </div>
+                    <button class="btn btn-outline" id="addAssetBtn">
+                        <i class="bi bi-plus-circle"></i>
+                        Add Asset Item
+                    </button>
+                </div>
+                
+                <div class="empty-state">
+                    <i class="bi bi-inbox"></i>
+                    <h4>No asset items selected for loan out</h4>
+                    <p>Click "Add Asset Item" to select assets for loan</p>
                 </div>
             </div>
 
             <!-- Action Buttons -->
             <div class="action-buttons">
-                <button class="btn btn-success" id="searchBtn">
+                <button class="btn btn-success" id="searchBtn2">
                     <i class="bi bi-search"></i>
                     Search
                 </button>
-                <button class="btn btn-primary" id="replaceBtn">
-                    <i class="bi bi-arrow-repeat"></i>
-                    Replace
+                <button class="btn btn-warning" id="loanBtn">
+                    <i class="bi bi-arrow-up-right"></i>
+                    Loan
                 </button>
-                <button class="btn btn-warning" id="submitBtn">
+                <button class="btn btn-primary" id="submitBtn">
                     <i class="bi bi-check-circle"></i>
                     Submit
                 </button>
@@ -1235,67 +1102,59 @@
                 }
             });
             
-            // Initialize with TRANSACTIONS menu open and Asset Replacement active
-            document.getElementById('transactionsToggle').click();
-            document.getElementById('transactionsMenu').classList.add('open');
-            document.querySelector('[data-section="asset-replacement"]').classList.add('active');
-            document.querySelector('#transactionsToggle .toggle-icon').classList.add('open');
+            // Initialize with TRANSACTIONS menu open and Loan Assets active
+            const transactionsToggle = document.getElementById('transactionsToggle');
+            if (transactionsToggle) {
+                transactionsToggle.click();
+                document.getElementById('transactionsMenu').classList.add('open');
+                document.querySelector('#transactionsToggle .toggle-icon').classList.add('open');
+            }
             
-            // Search functionality for existing asset
-            const searchButton = document.getElementById('searchButton');
+            // Set active section (Loan Assets)
+            const loanAssetsItem = document.querySelector('[data-section="loan-assets"]');
+            if (loanAssetsItem) {
+                loanAssetsItem.classList.add('active');
+            }
+            
+            // Search functionality
+            const searchBtn = document.getElementById('searchBtn');
             const searchAsset = document.getElementById('searchAsset');
             
-            if (searchButton) {
-                searchButton.addEventListener('click', function() {
+            if (searchBtn) {
+                searchBtn.addEventListener('click', function() {
                     if (searchAsset.value.trim() === '') {
-                        alert('Please enter search criteria for the asset to be replaced.');
+                        alert('Please enter search criteria for the asset to loan out.');
                         return;
                     }
                     
-                    // Simulate search - in real app, this would make an API call
-                    showSuccessMessage(`Searching for asset: ${searchAsset.value}`);
+                    // Simulate search
+                    showToastMessage(`Searching for asset: ${searchAsset.value}`, 'info');
                     
-                    // Simulate finding an asset (with delay)
+                    // Simulate finding an asset
                     setTimeout(() => {
-                        showSuccessMessage('Asset found: CPX00000000446 - HP Printer');
+                        showToastMessage('Asset found: FFXX0000000078 - CHAIR BLACK', 'success');
                         // Here you would update the form with the found asset data
                     }, 1000);
                 });
             }
             
-            // Search functionality for replacement asset
-            const searchReplacementButton = document.getElementById('searchReplacementButton');
-            const searchReplacement = document.getElementById('searchReplacement');
-            
-            if (searchReplacementButton) {
-                searchReplacementButton.addEventListener('click', function() {
-                    if (searchReplacement.value.trim() === '') {
-                        alert('Please enter search criteria for the replacement asset.');
+            // Loan button functionality
+            const loanBtn = document.getElementById('loanBtn');
+            if (loanBtn) {
+                loanBtn.addEventListener('click', function() {
+                    // Check if required fields are filled
+                    const employeeId = document.querySelector('input[placeholder="Enter employee ID"]');
+                    const itafNo = document.querySelector('input[placeholder="Enter ITAF number"]');
+                    
+                    if (!employeeId.value.trim() || !itafNo.value.trim()) {
+                        alert('Please fill in Employee ID and ITAF No. before loaning out.');
+                        if (!employeeId.value.trim()) employeeId.style.borderColor = 'var(--danger)';
+                        if (!itafNo.value.trim()) itafNo.style.borderColor = 'var(--danger)';
                         return;
                     }
                     
-                    // Simulate search
-                    showSuccessMessage(`Searching for replacement asset: ${searchReplacement.value}`);
-                    
-                    // Simulate finding a replacement asset
-                    setTimeout(() => {
-                        showSuccessMessage('Replacement asset found: CPX00000000447 - HP LaserJet Printer');
-                        // Here you would update the form with the found replacement asset data
-                    }, 1000);
-                });
-            }
-            
-            // Replace button functionality
-            const replaceBtn = document.getElementById('replaceBtn');
-            if (replaceBtn) {
-                replaceBtn.addEventListener('click', function() {
-                    if (confirm('Are you sure you want to replace this asset? This action cannot be undone.')) {
-                        showSuccessMessage('Asset replacement process initiated. Please fill in the replacement asset details.');
-                        
-                        // Enable replacement asset form fields
-                        document.querySelectorAll('#searchReplacement, .form-select, .form-control:not(.readonly)').forEach(field => {
-                            field.disabled = false;
-                        });
+                    if (confirm('Are you sure you want to loan out this asset?')) {
+                        showToastMessage('Asset loan process initiated. Please review the details before submitting.', 'info');
                     }
                 });
             }
@@ -1304,12 +1163,15 @@
             const submitBtn = document.getElementById('submitBtn');
             if (submitBtn) {
                 submitBtn.addEventListener('click', function() {
-                    // Check if all required fields are filled
-                    const requiredFields = document.querySelectorAll('.form-select, .form-control:not(.readonly)');
-                    let isValid = true;
+                    // Check if required fields are filled
+                    const requiredFields = [
+                        document.querySelector('input[placeholder="Enter employee ID"]'),
+                        document.querySelector('input[placeholder="Enter ITAF number"]')
+                    ];
                     
+                    let isValid = true;
                     requiredFields.forEach(field => {
-                        if (!field.disabled && field.value.trim() === '') {
+                        if (!field.value.trim()) {
                             isValid = false;
                             field.style.borderColor = 'var(--danger)';
                         } else {
@@ -1318,26 +1180,32 @@
                     });
                     
                     if (!isValid) {
-                        alert('Please fill in all required fields for the replacement asset.');
+                        alert('Please fill in all required fields before submitting.');
                         return;
                     }
                     
-                    if (confirm('Submit this asset replacement request?')) {
-                        showSuccessMessage('Asset replacement request submitted successfully! The request has been sent for approval.');
+                    if (confirm('Submit this loan request?')) {
+                        showToastMessage('Loan request submitted successfully! The request has been sent for approval.', 'success');
                         
-                        // Simulate form reset after submission
-                        setTimeout(() => {
-                            document.querySelectorAll('.form-control:not(.readonly)').forEach(input => {
-                                input.value = '';
-                            });
-                            document.querySelectorAll('.form-select').forEach(select => {
-                                select.selectedIndex = 0;
-                            });
-                            document.querySelectorAll('.notes-textarea').forEach(textarea => {
-                                textarea.value = '';
-                            });
-                        }, 2000);
+                        // Update status
+                        const statusBadge = document.querySelector('.status-in-storage');
+                        if (statusBadge) {
+                            statusBadge.textContent = 'Pending Loan Approval';
+                            statusBadge.style.backgroundColor = '#dbeafe';
+                            statusBadge.style.color = '#1e40af';
+                        }
                     }
+                });
+            }
+            
+            // Add Asset button functionality
+            const addAssetBtn = document.getElementById('addAssetBtn');
+            if (addAssetBtn) {
+                addAssetBtn.addEventListener('click', function() {
+                    showToastMessage('Add asset items dialog opened.', 'info');
+                    
+                    // In a real app, this would open a modal or new form
+                    // to select assets for loan
                 });
             }
             
@@ -1350,14 +1218,11 @@
                         document.querySelectorAll('.form-control:not(.readonly)').forEach(input => {
                             input.value = '';
                         });
-                        document.querySelectorAll('.form-select').forEach(select => {
-                            select.selectedIndex = 0;
-                        });
-                        document.querySelectorAll('.notes-textarea').forEach(textarea => {
+                        document.querySelectorAll('textarea').forEach(textarea => {
                             textarea.value = '';
                         });
                         
-                        showSuccessMessage('Form has been cleared.');
+                        showToastMessage('Form has been cleared.', 'info');
                     }
                 });
             }
@@ -1371,14 +1236,28 @@
                 }
             });
             
-            function showSuccessMessage(message) {
-                // Create toast notification
+            // Toast message function
+            function showToastMessage(message, type = 'info') {
+                const colors = {
+                    'info': '#3b82f6',
+                    'success': '#10b981',
+                    'warning': '#f59e0b',
+                    'error': '#ef4444'
+                };
+                
+                const icons = {
+                    'info': 'bi-info-circle',
+                    'success': 'bi-check-circle',
+                    'warning': 'bi-exclamation-triangle',
+                    'error': 'bi-x-circle'
+                };
+                
                 const toast = document.createElement('div');
                 toast.style.cssText = `
                     position: fixed;
                     top: 20px;
                     right: 20px;
-                    background: var(--success);
+                    background: ${colors[type]};
                     color: white;
                     padding: 15px 20px;
                     border-radius: 6px;
@@ -1391,13 +1270,12 @@
                 `;
                 
                 toast.innerHTML = `
-                    <i class="bi bi-check-circle" style="font-size: 20px;"></i>
+                    <i class="bi ${icons[type]}" style="font-size: 20px;"></i>
                     <span>${message}</span>
                 `;
                 
                 document.body.appendChild(toast);
                 
-                // Remove toast after 5 seconds
                 setTimeout(() => {
                     toast.style.animation = 'slideOut 0.3s ease';
                     setTimeout(() => toast.remove(), 300);

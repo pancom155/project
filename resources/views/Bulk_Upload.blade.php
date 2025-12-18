@@ -859,11 +859,11 @@
                     <span>Location Transfer</span>
                 </div>
               
-                <div class="sidebar-dropdown-item" data-section="asset-replacement">
+                <div class="sidebar-dropdown-item" data-section="asset-replacement" onclick="window.location.href='{{ route('asset_replacement') }}'">
                     <i class="bi bi-arrow-repeat"></i>
                     <span>Asset Replacement</span>
                 </div>
-                <div class="sidebar-dropdown-item" data-section="asset-disposal">
+                 <div class="sidebar-dropdown-item " data-section="asset-disposal" onclick="window.location.href='{{ route('asset_disposal') }}'">
                     <i class="bi bi-trash"></i>
                     <span>Asset Disposal</span>
                 </div>
@@ -875,11 +875,11 @@
                     <i class="bi bi-file-earmark-text"></i>
                     <span>Form 8106 (Farm OUT)</span>
                 </div>
-                <div class="sidebar-dropdown-item" data-section="pre-asset-recognition">
+                 <div class="sidebar-dropdown-item  " data-section="pre-asset-recognition" onclick="window.location.href='{{ route('pre_asset_recognition') }}'">
                     <i class="bi bi-check-circle"></i>
                     <span>Pre-Asset Recognition</span>
                 </div>
-                <div class="sidebar-dropdown-item" data-section="loan-assets">
+                <div class="sidebar-dropdown-item " data-section="loan-asset" onclick="window.location.href='{{ route('loan_asset') }}'">
                     <i class="bi bi-arrow-up-right"></i>
                     <span>Loan Assets</span>
                 </div>
@@ -896,12 +896,9 @@
                 <i class="bi bi-chevron-right toggle-icon"></i>
             </div>
             <div class="sidebar-dropdown" id="approvalQueuesMenu">
-                <div class="sidebar-dropdown-item badge-item">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <i class="bi bi-inboxes"></i>
-                        <span>My Approval Queue</span>
-                    </div>
-                    <span class="badge">12</span>
+                <div class="sidebar-dropdown-item  badge-item"  onclick="window.location.href='{{ route('my_approval_queue') }}'">
+                   <i class="bi bi-inboxes"></i>
+                    <span>My Approval Queue</span>
                 </div>
             </div>
         </div>

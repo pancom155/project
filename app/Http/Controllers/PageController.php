@@ -27,9 +27,29 @@ class PageController extends Controller
         return view('Asset_Replacement');
     }
 
-         public function Asset_Disposal()
+        public function Asset_Disposal()
     {
         return view('Asset_Disposal');
+    }
+
+        public function Loan_Asset()
+    {
+        return view('Loan_Asset');
+    }
+
+        public function Pre_Asset_Recognition()
+    {
+        return view('Pre_Asset_Recognition');
+    }
+
+          public function My_Approval_Queue()
+    {
+        return view('My_Approval_Queue');
+    }
+
+             public function Reports()
+    {
+        return view('Reports');
     }
 
 
